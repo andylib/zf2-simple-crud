@@ -18,5 +18,5 @@ Usage
 
 Open your browser and goto your project-dir/zf2-simple-crud/index.php/ 
 
-Alternatively, You can follow the [ZendSkeletonApplication] (https://github.com/zendframework/ZendSkeletonApplication) installation. This application structure is based on it.
+Alternatively, You can follow the [ZendSkeletonApplication] (https://github.com/zendframework/ZendSkeletonApplication) installation. The structure of this application is based on it.
 
