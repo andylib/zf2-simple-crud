@@ -1,0 +1,24 @@
+{
+    "name": "andylib/zf2-simple-crud",
+    "description": "This is a Zend Framework 2 module that does simple CRUD application. It is intended to be an example of how zend framework 2 components are used in common application.",
+    "type": "application",
+    "keywords": [
+        "framework",
+        "zf2",
+        "crud"
+    ],
+    "homepage": "http://github.com/andylib/zf2-simple-crud.git",
+    "license": "GPL-3.0",
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.2.*"
+    },
+    "require-dev": {
+    },
+    "suggest": {
+    },
+    "bin": [
+    ],
+    "replace": {
+    }
+}
