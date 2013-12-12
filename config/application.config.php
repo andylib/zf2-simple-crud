@@ -4,6 +4,8 @@ return array(
     'modules' => array(
         'Application',
         'SimpleCrud',
+        'DoctrineModule',
+        'DoctrineORMModule',
         'ZendDeveloperTools',
     ),
 
