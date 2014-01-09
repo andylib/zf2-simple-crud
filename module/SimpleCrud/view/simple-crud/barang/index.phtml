@@ -1,1 +1,27 @@
-index barang
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th style="width: 30px">No</th>
+            <th style="width: 130px">Kode</th>
+            <th style="width: 130px">Nama</th>
+            <th style="width: 130px">Satuan</th>
+            <th style="width: 130px">Harga</th>
+            <th>Keterangan</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+            $no = 1; 
+            foreach($this->barangList as $barang): 
+        ?>
+        <tr>
+            <td><?php echo $no; ?></td>
+            <td><?php echo $this->escapeHtml($barang->getKode()) ?></td>
+            <td><?php echo $this->escapeHtml($barang->getNama()) ?></td>
+            <td><?php echo $this->escapeHtml($barang->getSatuan()) ?></td>
+            <td><?php echo $this->escapeHtml($barang->getHarga()) ?></td>
+            <td><?php echo $this->escapeHtml($barang->getKeterangan()) ?></td>
+        </tr>
+        <?php $no++; endforeach; ?>
+    </tbody>
+</table>

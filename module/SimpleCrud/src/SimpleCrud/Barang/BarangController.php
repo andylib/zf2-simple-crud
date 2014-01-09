@@ -8,5 +8,12 @@ class BarangController extends AbstractActionController
 {
     public function indexAction()
     {
+        $viewModel = array();
+
+        $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+
+        $viewModel['barangList'] = $em->getRepository('SimpleCrud\Barang\Barang')->findAll();
+
+        return $viewModel;
     }
 }
