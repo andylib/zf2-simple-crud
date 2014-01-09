@@ -27,7 +27,6 @@ class EntryForm extends Form
             'attributes' => array(
                 'placeholder' => 'masukkan kode barang, seperti : ABCD',
             ),
-            'required' => true,
         ));
         
         $this->add(array(
@@ -43,7 +42,6 @@ class EntryForm extends Form
             'attributes' => array(
                 'placeholder' => 'masukkan nama barang, seperti : Bulpen',
             ),
-            'required' => true,
         ));
 
         $this->add(array(
@@ -103,32 +101,5 @@ class EntryForm extends Form
                 'class'  => 'btn-primary',
             ),
         ));
-    }
-
-    public function getInputFilter()
-    {
-        $inputFilter = parent::getInputFilter();
-
-        $inputFilter->add(array(
-            'name' => 'kode',
-            'required' => true,
-        ));
-        
-        $inputFilter->add(array(
-            'name' => 'nama',
-            'required' => true,
-        ));
-
-        $inputFilter->add(array(
-            'name' => 'satuan',
-            'required' => true,
-        ));
-        
-        $inputFilter->add(array(
-            'name' => 'harga',
-            'required' => true,
-        ));
-
-        return $inputFilter;
     }
 }
