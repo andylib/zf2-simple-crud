@@ -1,0 +1,19 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="SimpleCrud\Barang\Barang" table="master_barang">
+        
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+        
+        <field name="kode" column="kode" type="string" length="255" unique="true" />
+        <field name="nama" column="nama" type="string" length="255" unique="true" />
+        <field name="harga" column="harga" type="decimal" precision="18" scale="2" />
+        <field name="satuan" column="satuan" type="string" length="255" nullable="true" />
+        <field name="keterangan" column="keterangan" type="string" length="255" nullable="true" />
+
+    </entity>
+</doctrine-mapping>
