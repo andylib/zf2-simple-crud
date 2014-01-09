@@ -16,4 +16,19 @@ class BarangController extends AbstractActionController
 
         return $viewModel;
     }
+
+    public function entryAction()
+    {
+        $form = new EntryForm();
+
+        if ($this->getRequest()->isPost()) {
+            $form->setData($this->getRequest()->getPost());
+            if ($form->isValid()) {
+            }
+        }
+
+        $viewModel['form'] = $form;
+
+        return $viewModel;
+    }
 }
