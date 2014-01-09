@@ -89,4 +89,39 @@ class BarangController extends AbstractActionController
         return $viewModel;
     }
 
+    public function deleteAction()
+    {
+        $id = (int)$this->getRequest()->getQuery('id');
+        $barang = null;
+
+        $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+        
+        if ($id > 0) {
+            $barang = $em->find('SimpleCrud\Barang\Barang', $id);
+        }
+
+        if (null === $barang) {
+            throw new \Exception('Barang tidak ditemukan');
+        }
+        
+        $viewModel = array();
+
+        $viewModel['form'] = new DeleteConfirmationForm();
+        $viewModel['barang'] = $barang;
+        
+        if (!$this->getRequest()->isPost()) {
+
+            return $viewModel;
+        } else {
+            $em->remove($barang);
+            $em->flush();
+
+            $this->flashMessenger()->addMessage('Barang ' . $barang->getKode() . ' berhasil dihapus.');
+            $this->redirect()->toRoute('simple-crud/default', array('controller' => 'barang', 'action' => 'index'));
+
+            return $viewModel;
+        }
+        
+    }
+
 }

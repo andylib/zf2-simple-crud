@@ -1,0 +1,17 @@
+<div class="alert alert-danger">Apakah anda yakin akan menghapus barang : <strong><?php echo $this->escapeHtml($this->barang->getKode())  ?></strong>. Barang yang sudah dihapus tidak dapat dikembalikan lagi.</div>
+<?php
+
+$form = $this->form;
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formButton($form->get('yes'));
+echo '&nbsp';
+echo $this->formButton($form->get('no'));
+echo $this->form()->closeTag($form);
+?>
+<script>
+    $('#btn-no').click(function(e) {
+        history.go(-1);
+    });
+</script>
