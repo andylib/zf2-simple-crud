@@ -1,4 +1,8 @@
 <?php
+    $this->filterForm->prepare();
+    echo $this->form($this->filterForm);
+?>
+<?php
     $editUrl = $this->url('simple-crud/default', array('controller' => 'barang', 'action' => 'edit'));
     $deleteUrl = $this->url('simple-crud/default', array('controller' => 'barang', 'action' => 'delete'));
 

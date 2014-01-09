@@ -10,19 +10,33 @@ class BarangController extends AbstractActionController
     {
         $currentPageNumber = (int)$this->getRequest()->getQuery('page');
         $viewModel = array();
+        $filterForm = new FilterForm();
+        $filterData = array();
+
+        if ($this->getRequest()->isPost()) {
+            $filterForm->setData($this->getRequest()->getPost());
+            if ($filterForm->isValid()) {
+                $filterData = $filterForm->getData();
+            }
+        }
 
         $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
-        
         $qb = $em->createQueryBuilder()
                  ->select('b')
                  ->from('SimpleCrud\Barang\Barang', 'b');
+
+        if (!empty($filterData['kode'])) {
+            $qb->andWhere('LOWER(b.kode) LIKE :kode');
+            $qb->setParameter('kode', strtolower("%{$filterData['kode']}%"));
+        }
         
         $paginator = new \SimpleCrud\Paginator\ORMPaginator($qb->getQuery());
         $paginator->setCurrentPageNumber($currentPageNumber);
         $paginator->setItemCountPerPage(2);
         
         $viewModel['paginator'] = $paginator;
+        $viewModel['filterForm'] = $filterForm;
 
         return $viewModel;
     }
