@@ -7,6 +7,7 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'ZendDeveloperTools',
+        'TwbBundle',
     ),
 
     // These are various options for the listeners attached to the ModuleManager
