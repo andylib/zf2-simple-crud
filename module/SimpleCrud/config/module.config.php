@@ -45,6 +45,15 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
+    'view_helpers' => array(
+        'invokables' => array(
+            'customPaginationControl' => 'SimpleCrud\Paginator\View\Helper\CustomPaginationControl',
+            //'messenger' => 'OneMind\Core\View\Helper\Messenger',
+            //'customBreadcrumbs' => 'OneMind\Core\View\Helper\CustomBreadcrumbs',
+        ),  
+        'factories' => array(
+        ),  
+    ),
     'doctrine' => array(
         'driver' => array(
             // defines an annotation driver with two paths, and names it `my_annotation_driver`

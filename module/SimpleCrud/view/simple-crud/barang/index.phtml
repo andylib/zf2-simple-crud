@@ -4,6 +4,7 @@
 
 ?>
 <a href="<?php echo $this->url('simple-crud/default', array('controller' => 'barang', 'action' => 'entry')) ?>" class="btn btn-primary">Tambah Barang</a>
+<?php echo $paginationHtml = $this->customPaginationControl($this->paginator) ?>
 <br class="clear" />
 <br class="clear" />
 <table class="table table-bordered table-hover">
@@ -21,10 +22,10 @@
     <tbody>
         <?php
             $no = 1; 
-            foreach($this->barangList as $barang): 
+            foreach($this->paginator as $barang): 
         ?>
         <tr>
-            <td><?php echo $no; ?></td>
+            <td><?php echo $this->paginator->getAbsoluteItemNumber($no); ?></td>
             <td><?php echo $this->escapeHtml($barang->getKode()) ?></td>
             <td><?php echo $this->escapeHtml($barang->getNama()) ?></td>
             <td><?php echo $this->escapeHtml($barang->getSatuan()) ?></td>

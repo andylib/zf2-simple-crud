@@ -15,6 +15,24 @@
                         ->prependStylesheet($this->basePath() . '/css/style.css')
                         ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
                         ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+        <style>
+            .pagination li {
+                display: inline-block;
+                list-style: none;
+            }
+
+            .pagination.pagination-right {
+                float: right;
+            }
+            
+            .pagination {
+                margin: 5px 0;
+            }
+
+            .pagination .current-page {
+                margin: 0 10px;
+            }
+        </style>
 
         <!-- Scripts -->
         <?php echo $this->headScript()

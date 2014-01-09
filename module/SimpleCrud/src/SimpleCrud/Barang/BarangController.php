@@ -8,11 +8,21 @@ class BarangController extends AbstractActionController
 {
     public function indexAction()
     {
+        $currentPageNumber = (int)$this->getRequest()->getQuery('page');
         $viewModel = array();
 
         $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 
-        $viewModel['barangList'] = $em->getRepository('SimpleCrud\Barang\Barang')->findAll();
+        
+        $qb = $em->createQueryBuilder()
+                 ->select('b')
+                 ->from('SimpleCrud\Barang\Barang', 'b');
+        
+        $paginator = new \SimpleCrud\Paginator\ORMPaginator($qb->getQuery());
+        $paginator->setCurrentPageNumber($currentPageNumber);
+        $paginator->setItemCountPerPage(2);
+        
+        $viewModel['paginator'] = $paginator;
 
         return $viewModel;
     }

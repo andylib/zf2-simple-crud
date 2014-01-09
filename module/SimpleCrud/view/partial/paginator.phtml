@@ -1,0 +1,72 @@
+<?php if ($this->pageCount): ?>
+     <div class="pagination pagination-right">
+         <ul>
+
+             <!-- First page link -->
+             <?php if (isset($this->previous)): ?>
+                 <li>
+                     <a class="btn-sm btn btn-default" href="?page=<?php echo $this->first; ?>" title="Halaman Pertama">
+                         &lt;&lt;
+                     </a>
+                 </li>
+             <?php else: ?>
+                 <li class="disabled">
+                     <span class="btn-sm btn btn-default disabled">
+                         &lt;&lt;
+                     </span>
+                 </li>
+             <?php endif; ?>
+
+             <!-- Previous page link -->
+             <?php if (isset($this->previous)): ?>
+                 <li>
+                     <a class="btn-sm btn btn-default" href="?page=<?php echo $this->previous; ?>" title="Halaman Sebelumnya">
+                         &lt;
+                     </a>
+                 </li>
+             <?php else: ?>
+                 <li class="disabled">
+                     <span class="btn btn-sm btn-default disabled">
+                         &lt;
+                     </span>
+                 </li>
+             <?php endif; ?>
+             <li>
+                 <a class="current-page" href="javascript:void(0);">
+                     <strong><?php echo $this->current; ?></strong> / <strong><?php echo $this->pageCount;?></strong>
+                 </a>
+             </li>
+             
+
+             <!-- Next page link -->
+             <?php if (isset($this->next)): ?>
+                 <li>
+                     <a class="btn btn-sm btn-default" href="?page=<?php echo $this->next; ?>" title="Halaman Berikutnya">
+                         &gt;
+                     </a>
+                 </li>
+             <?php else: ?>
+                 <li class="disabled">
+                     <span class="btn btn-sm btn-default disabled">
+                         &gt;
+                     </span>
+                 </li>
+             <?php endif; ?>
+
+             <!-- Last page link -->
+             <?php if (isset($this->next)): ?>
+                 <li>
+                     <a class="btn btn-sm btn-default" href="?page=<?php echo $this->last; ?>" title="Halaman Terakhir">
+                         &gt;&gt;
+                     </a>
+                 </li>
+             <?php else: ?>
+                 <li class="disabled">
+                     <span class="btn btn-sm btn-default disabled">
+                         &gt;&gt;
+                     </span>
+                 </li>
+             <?php endif; ?>
+         </ul>
+     </div>
+ <?php endif; ?>
