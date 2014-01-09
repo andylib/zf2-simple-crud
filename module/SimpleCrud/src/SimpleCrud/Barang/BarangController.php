@@ -33,6 +33,9 @@ class BarangController extends AbstractActionController
 
                 $em->persist($barang);
                 $em->flush();
+
+                $this->flashMessenger()->addMessage('Barang ' . $barang->getKode()  . ' berhasil disimpan');
+                $this->redirect()->toRoute('simple-crud/default', array('controller' => 'barang', 'action' => 'index'));
             } else {
             }
         }
