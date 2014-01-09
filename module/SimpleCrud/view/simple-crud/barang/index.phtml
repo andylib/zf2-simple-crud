@@ -1,3 +1,8 @@
+<?php
+    $editUrl = $this->url('simple-crud/default', array('controller' => 'barang', 'action' => 'edit'));
+    $deleteUrl = $this->url('simple-crud/default', array('controller' => 'barang', 'action' => 'delete'));
+
+?>
 <a href="<?php echo $this->url('simple-crud/default', array('controller' => 'barang', 'action' => 'entry')) ?>" class="btn btn-primary">Tambah Barang</a>
 <br class="clear" />
 <br class="clear" />
@@ -10,6 +15,7 @@
             <th style="width: 130px">Satuan</th>
             <th style="width: 130px">Harga</th>
             <th>Keterangan</th>
+            <th style="width: 130px"></th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +30,7 @@
             <td><?php echo $this->escapeHtml($barang->getSatuan()) ?></td>
             <td><?php echo $this->escapeHtml($barang->getHarga()) ?></td>
             <td><?php echo $this->escapeHtml($barang->getKeterangan()) ?></td>
+            <td><a href="<?php echo $editUrl ?>?id=<?php echo $this->escapeHtml($barang->getId()) ?>">Edit</a> | <a href="<?php echo $deleteUrl ?>?id=<?php echo $this->escapeHtml($barang->getId()) ?>">Delete</a></td>
         </tr>
         <?php $no++; endforeach; ?>
     </tbody>

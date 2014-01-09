@@ -44,4 +44,49 @@ class BarangController extends AbstractActionController
 
         return $viewModel;
     }
+    
+    public function editAction()
+    {
+        $id = (int)$this->getRequest()->getQuery('id');
+        $barang = null;
+
+        $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+        
+        if ($id > 0) {
+            $barang = $em->find('SimpleCrud\Barang\Barang', $id);
+        }
+
+        if (null === $barang) {
+            throw new \Exception('Barang tidak ditemukan');
+        }
+        
+        $hydrator = new \DoctrineModule\Stdlib\Hydrator\DoctrineObject($em);
+        
+        $form = new EntryForm();
+        $form->setData($hydrator->extract($barang));
+
+        $form->setInputFilter(new EntryFilter());
+
+        if ($this->getRequest()->isPost()) {
+            $form->setData($this->getRequest()->getPost());
+            if ($form->isValid()) {
+                $hydrator->hydrate($form->getData(), $barang);
+
+                $em->persist($barang);
+                $em->flush();
+
+                $this->flashMessenger()->addMessage('Barang ' . $barang->getKode()  . ' berhasil disimpan');
+                $this->redirect()->toRoute('simple-crud/default', array('controller' => 'barang', 'action' => 'index'));
+            } else {
+            }
+        }
+
+        $viewModel['form'] = $form;
+
+        $viewModel = new \Zend\View\Model\ViewModel($viewModel);
+        $viewModel->setTemplate('simple-crud/barang/entry');
+
+        return $viewModel;
+    }
+
 }
